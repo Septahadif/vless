@@ -1,7 +1,7 @@
 // =============  workers-vless-relay  =============
 // Ganti HOST_IP, HOST_PORT, HOST_PATH, dan UUID di bawah
 const HOST_IP   = '202.155.91.127';     // IP VPS / rumah kamu
-const HOST_PORT = '80';           // port Xray di atas
+const HOST_PORT = '443';           // port Xray di atas
 const HOST_PATH = '/wss';          // path wsSettings di Xray
 const UUID      = 'b831381d-6324-4d53-ad4f-8cda48b30811';     // sama persis dengan server
 
@@ -28,7 +28,7 @@ export default {
     server.accept();
 
     // 2. Bungkus koneksi asli ke Xray
-    const remote = await fetch(`http://${HOST_IP}:${HOST_PORT}${HOST_PATH}`, {
+    const remote = await fetch(`https://${HOST_IP}:${HOST_PORT}${HOST_PATH}`, {
       headers: {
         Upgrade: 'websocket',
         Connection: 'Upgrade',
