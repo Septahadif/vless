@@ -1,20 +1,15 @@
 export default {
   async fetch(request) {
-    const upgradeHeader = request.headers.get('Upgrade');
-    
-    if (upgradeHeader === 'websocket') {
-      const url = new URL(request.url);
-      
-      // Modify the request to point to your Xray server
-      const modifiedRequest = new Request(`http://202.155.91.127:10000/ed=2048`, {
-        headers: request.headers,
-        method: request.method,
-        body: request.body
+    // Test if worker can reach your server
+    try {
+      const testResponse = await fetch(`http://202.155.91.127:10000/`, {
+        method: 'HEAD',
+        timeout: 5000
       });
       
-      return fetch(modifiedRequest);
+      return new Response(`Server reachable: ${testResponse.status} - Use WebSocket path /ed=2048`);
+    } catch (error) {
+      return new Response(`Cannot reach server: ${error.message}`, { status: 502 });
     }
-    
-    return new Response("Xray Worker - WebSocket only");
   }
 }
