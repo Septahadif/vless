@@ -28,7 +28,7 @@ export default {
     server.accept();
 
     // 2. Bungkus koneksi asli ke Xray
-    const remote = await fetch(`https://${HOST_IP}:${HOST_PORT}${HOST_PATH}`, {
+    const remote = await fetch(`http://${HOST_IP}:${HOST_PORT}${HOST_PATH}`, {
       headers: {
         Upgrade: 'websocket',
         Connection: 'Upgrade',
