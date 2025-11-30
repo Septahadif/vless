@@ -8,7 +8,7 @@ export default {
     }
     
     // Gunakan Squid sebagai forward proxy untuk HTTP
-    const squidResponse = await fetch(`http://202.155.91.127:10000`, {
+    const squidResponse = await fetch(`http://202.155.91.127:3128`, {
       headers: {
         'X-Target-URL': destination
       }
